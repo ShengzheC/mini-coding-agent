@@ -1,0 +1,5 @@
+{
+  "description": "The mapping-page cache sometimes evicts a page that was just read. Fix the bug in lru_cache.py.",
+  "editable": ["lru_cache.py"],
+  "tests": ["test_lru_cache.py"]
+}

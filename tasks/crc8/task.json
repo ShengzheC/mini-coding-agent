@@ -1,0 +1,5 @@
+{
+  "description": "crc8() returns values that do not match the CRC-8/SMBus reference; for example, the check value for b\"123456789\" should be 0xF4. Fix the bug in crc8.py.",
+  "editable": ["crc8.py"],
+  "tests": ["test_crc8.py"]
+}

@@ -1,0 +1,5 @@
+{
+  "description": "lower_bound() returns a wrong index for some targets. Fix the bug in binary_search.py.",
+  "editable": ["binary_search.py"],
+  "tests": ["test_binary_search.py"]
+}

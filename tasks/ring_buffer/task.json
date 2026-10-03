@@ -1,0 +1,5 @@
+{
+  "description": "The command queue (RingBuffer) crashes after it has been in use for a while. Fix the bug in ring_buffer.py.",
+  "editable": ["ring_buffer.py"],
+  "tests": ["test_ring_buffer.py"]
+}

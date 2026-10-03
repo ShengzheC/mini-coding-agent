@@ -1,0 +1,5 @@
+{
+  "description": "set_field() corrupts other bits of the register. Fix the bug in bitfield.py.",
+  "editable": ["bitfield.py"],
+  "tests": ["test_bitfield.py"]
+}

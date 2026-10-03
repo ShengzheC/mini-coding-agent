@@ -1,0 +1,9 @@
+[project]
+name = "mini-coding-agent"
+version = "0.1.0"
+description = "A from-scratch LLM coding agent that fixes bugs using tools and tests"
+requires-python = ">=3.10"
+dependencies = ["anthropic>=1.0", "pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
