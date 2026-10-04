@@ -14,7 +14,6 @@ FIXES = {
     "crc8": ("    return crc\n", "    return crc & 0xFF\n"),
     "lru_cache": ("        return self._items[key]\n", "        self._items.move_to_end(key)\n        return self._items[key]\n"),
     "ring_buffer": ("self._head = self._head + 1", "self._head = (self._head + 1) % len(self._buf)"),
-    "wear_leveling": ("-block))", "block))"),
 }
 
 

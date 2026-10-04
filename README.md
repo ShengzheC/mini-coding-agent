@@ -1,6 +1,6 @@
 # Mini Coding Agent
 
-A small coding agent, written from scratch, that fixes bugs the way a developer does: read the code, run the tests, make a minimal edit, run the tests again, and stop. It is benchmarked on [QuixBugs](https://github.com/jkoppel/QuixBugs) (40 Python programs, each with a one-line bug) and on six small firmware-flavored tasks, against a one-shot baseline that gets a single attempt with no tools.
+A small coding agent, written from scratch, that fixes bugs the way a developer does: read the code, run the tests, make a minimal edit, run the tests again, and stop. It is benchmarked on [QuixBugs](https://github.com/jkoppel/QuixBugs) (40 Python programs, each with a one-line bug) and on five small firmware-flavored tasks, against a one-shot baseline that gets a single attempt with no tools.
 
 ```text
 Task:  The command queue (RingBuffer) crashes after it has been in use for a while.
@@ -25,7 +25,7 @@ flowchart LR
 | **Verdict** (`bench.py`) | After each attempt the harness runs the tests itself. Saying "done" does not count, and the report lists every case where the agent claimed success but the tests fail. |
 | **One-shot ablation** | Same model, no loop. It sees the file, the tests and the failing output once, and returns one corrected file. |
 
-Built-in tasks (`tasks/`): `crc8` (CRC-8 checksum), `ring_buffer` (command queue), `bitfield` (register fields), `wear_leveling` (block selection), `lru_cache` (mapping-page cache), `binary_search`. Each is a short bug report plus code and tests, and `tests/` checks that each bug is real and that its reference fix passes.
+Built-in tasks (`tasks/`): `crc8` (CRC-8 checksum), `ring_buffer` (command queue), `bitfield` (register fields), `lru_cache` (least-recently-used cache), `binary_search`. Each is a short bug report plus code and tests, and `tests/` checks that each bug is real and that its reference fix passes.
 
 ## Quickstart
 
@@ -38,7 +38,7 @@ git clone https://github.com/jkoppel/QuixBugs data/QuixBugs
 The agent uses the [Anthropic API](https://docs.anthropic.com/). Set `ANTHROPIC_API_KEY`, then:
 
 ```bash
-python -m mini_agent.bench --suite builtin                        # the six built-in tasks
+python -m mini_agent.bench --suite builtin                        # the five built-in tasks
 python -m mini_agent.bench --suite quixbugs --limit 5             # quick check
 python -m mini_agent.bench --suite quixbugs                       # all 40 programs
 python -m mini_agent.bench --suite quixbugs --method oneshot      # ablation
@@ -52,10 +52,10 @@ Useful flags: `--model` (default `claude-opus-5-5`), `--effort low|medium|high`,
 **Harness check (no LLM).** All 40 QuixBugs programs fail their tests as shipped (3 of them hang until the timeout), and all 40 reference fixes from `correct_python_programs/` pass inside the workspace (QuixBugs commit `4257f44`).
 
 <!-- Add the LLM results here after running them, e.g.
-| Method | QuixBugs (40) | Built-in (6) | Mean tool calls | Said done but failed |
+| Method | QuixBugs (40) | Built-in (5) | Mean tool calls | Said done but failed |
 |---|---|---|---|---|
-| Agent (claude-opus-5-5, medium) | x/40 | x/6 | x | x |
-| One-shot | x/40 | x/6 | - | - |
+| Agent (claude-opus-5-5, medium) | x/40 | x/5 | x | x |
+| One-shot | x/40 | x/5 | - | - |
 and paste one short, real transcript from runs/ as an example. -->
 
 ## Design notes

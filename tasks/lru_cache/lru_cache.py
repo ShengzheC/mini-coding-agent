@@ -1,4 +1,4 @@
-"""A least-recently-used cache, e.g. for mapping-table pages held in controller DRAM."""
+"""A least-recently-used cache with a fixed capacity."""
 
 from collections import OrderedDict
 

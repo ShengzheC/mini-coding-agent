@@ -1,5 +1,0 @@
-{
-  "description": "pick_block() does not always follow its documented rules. Fix the bug in wear_leveling.py.",
-  "editable": ["wear_leveling.py"],
-  "tests": ["test_wear_leveling.py"]
-}
